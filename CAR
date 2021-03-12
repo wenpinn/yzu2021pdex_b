@@ -1,15 +1,27 @@
 
+/**
+  * 先定義ccar，接著宣告字串nickname，使其訪問許可權變為private
+  * ccar()是建構子、~ccar()是解構子
+  * public 繼承，不改變他的訪問許可權
+  * 給燈、輪子數量
+  * Author 1092010 黃薰儀
+  * version 1.0;
+  * since 2021-3-12
+  */ 
+
 #include <iostream>
 #include <string>
 using namespace std;
 class CCAR {
-private:
-string nickname;
-protected:
-int light;
+private: 
+string nickname; 
+protected: 
+int light; 
+/** 類別作為function
+  */
 int wheel;
-public:
-CCAR() :light(2)
+public:  
+CCAR() :light(2) 
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
@@ -38,6 +50,10 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+  * 類別CBMW，繼承CCAR
+  * 改變light、wheel數值，與上面程式不大相同
+  */ 
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -54,7 +70,9 @@ CCAR::start();//scope operator
 //c.start();
 }
 };
-//--------------------------
+//-------------------------
+/**執行上述副程式:開始、絕對值、結束
+  */ 
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
