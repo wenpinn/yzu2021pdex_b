@@ -1,66 +1,90 @@
+/**
+ * @file CAR.cpp
+ * @author Tom Liu 1082054
+ * @version 1.1
+ */
 
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
-private:
-string nickname;
-protected:
-int light;
-int wheel;
-public:
-CCAR() :light(2)
-{
-wheel = 5;
-cout << "car's constructor(wheel=" << wheel << ")" << endl;
-}
-CCAR(string nickname) :light(2)
-{
-wheel = 5;
-this->nickname = nickname;
-cout << "car's constructor(nickname=" << nickname << ")" << endl;
-}
-~CCAR()
-{
-cout << "car's destructor" << "(" << nickname << ")" << endl;
-}
-void start()
-{
-cout << "car's start" << endl;
-}
-void stop()
-{
-cout << "car's stop" << endl;
-}
-void turn()
-{
-cout << "car's turn" << endl;
-}
-};
-//--------------------------
-class CBMW : public CCAR {
-public:
-CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-~CBMW() { cout << "bmw's destructor" << endl; }
-void Abs()
-{
-cout << "bmw's abs" << endl;
-}
-void start()
-{
-cout << "bmw's start" << endl;
-CCAR::start();//scope operator
-//CCAR c;
-//c.start();
-}
-};
-//--------------------------
-int main(int argc, const char * argv[]) {
-CBMW bmw;
-// bmw.light=3;
-bmw.start();
-bmw.Abs();
-bmw.stop();
 
-return 0;
+/** 
+* class can distinguish each variable or string into private, protected and public
+* private means only the element in the bracket can access
+
+
+class CCAR 
+{
+  private:
+    string nickname;
+    
+  protected:
+    int light;
+    int wheel; 
+    
+  public:
+    CCAR() :light(2)
+    {
+        wheel = 5;
+        cout << "car's constructor(wheel=" << wheel << ")" << endl;
+    }
+    
+    CCAR(string nickname) :light(2)
+    {
+        wheel = 5;
+        this->nickname = nickname;
+        cout << "car's constructor(nickname=" << nickname << ")" << endl;
+    }
+
+    ~CCAR() //波浪符等於不傳入參數
+    {
+        cout << "car's destructor" << "(" << nickname << ")" << endl;
+    }
+
+    void start()
+    {
+        cout << "car's start" << endl;
+    }
+
+    void stop()
+    {
+        cout << "car's stop" << endl;
+    }
+
+    void turn()
+    {
+        cout << "car's turn" << endl;
+    }
+};
+
+//--------------------------
+
+class CBMW : public CCAR
+{
+  public:
+    CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+    ~CBMW() { cout << "bmw's destructor" << endl; }
+    void Abs()
+    {
+        cout << "bmw's abs" << endl;
+    }
+    void start()
+    {
+        cout << "bmw's start" << endl;
+        CCAR::start();//scope operator
+        //CCAR c;
+        //c.start();
+    }
+};
+
+//--------------------------
+
+int main(int argc, const char * argv[]) 
+{
+  CBMW bmw;
+  // bmw.light=3;
+  bmw.start();
+  bmw.Abs();
+  bmw.stop();
+  return 0;
 }
