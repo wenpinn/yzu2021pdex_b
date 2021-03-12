@@ -19,29 +19,41 @@ protected:
 int light;
 int wheel;
 public:
+/** 建構時會執行這個東西（若沒特別指定就打CCAR() ）
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/** 建構時會執行這個東西（若特別指定就打CCAR(string nickname) ）
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/** 建構結束時會執行這個東西）
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**  public的成員函式
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**  public的成員函式
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**  public的成員函式
+ */
 void turn()
 {
 cout << "car's turn" << endl;
@@ -62,6 +74,8 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+/**  這裏使用CCAR的start函式
+ */
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
