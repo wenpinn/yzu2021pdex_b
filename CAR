@@ -1,7 +1,17 @@
-
+/**
+  * @author 1092020洪珮珊
+  * @version 1.0
+  * @since 2021.03.12
+  */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ * 先設置一個class 名稱為CCAR
+ * private不可被外部進行讀取、更改、繼承
+ * protected不可被外部進行讀取、更改，但可以被繼承
+ * public可以被外部進行讀取、更改、繼承。public還可以對private、protected進行修改、讀取
+ */
 class CCAR {
 private:
 string nickname;
@@ -9,35 +19,50 @@ protected:
 int light;
 int wheel;
 public:
+/** 建構時會執行這個東西（若沒特別指定就打CCAR() ）
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/** 建構時會執行這個東西（若特別指定就打CCAR(string nickname) ）
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/** 建構結束時會執行這個東西）
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**  public的成員函式
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**  public的成員函式
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**  public的成員函式
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * 這個架構的名稱為CBMW,然後繼承CCAR的public
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -49,12 +74,17 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+/**  這裏使用CCAR的start函式
+ */
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
 }
 };
 //--------------------------
+/**
+ * 以bmw為名建造CBMW架構的類別
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
