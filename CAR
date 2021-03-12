@@ -1,51 +1,140 @@
-
+/**
+ * @file iostream, string
+ * @author 1092034
+ * @version 8.1
+ */
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
-private:
+/**
+ * @brief 創建class類別，名為CCAR
+ * 有三個不同的存取修飾子
+ * private, protected,public
+ * private: 內容不受此類別外的物件影響，不能被繼承
+ * protected: 內容不受此類別外的物件影響，可被繼承
+ * public: 受類別外的物件影響，可被繼承
+ */
+class CCAR {  
+private:  
 string nickname;
 protected:
 int light;
 int wheel;
 public:
+/**
+ * A constructor.
+ * 類別被創造出來且不被指定任何變數時做的事，light=2
+ * 設定wheel=5
+ * 輸出"car's constructor(wheel=" << wheel << ")"
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * A constructor.
+ * 類別被創造出來且被指定string時做的事，light=2
+ * 設定wheel=5
+ * 將指定的值丟到private裡面的nickname裡面
+ * 輸出"car's constructor(nickname=" << nickname << ")"
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ * A destructor.
+ * 類別結束時做的事
+ * 輸出"car's destructor" << "(" << nickname << ")"
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * 函式成員
+ */
+/**
+ * 輸出"car's start"
+ */ 
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * 函式成員
+ */
+/**
+ * 輸出"car's stop"
+ */ 
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ * 函式成員
+ */
+ /**
+ * 輸出 "car's turn"
+ */ 
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * @brief 創建class類別，名為CBMW，繼承CCAR
+ * 有一個存取修飾子
+ * public: 受類別外的物件影響，可被繼承
+ */
 class CBMW : public CCAR {
 public:
-CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * A constructor.
+ * 類別被創造出來且不被指定任何變數時做的事
+ */
+/**
+ * 設定light=4,wheel=4
+ * 輸出"bmw's constructor" 
+ */
+CBMW() 
+{ 
+light = 4; 
+wheel = 4; 
+cout << "bmw's constructor" << endl; 
+}
+/**
+ * A destructor.
+ * 類別結束時做的事
+ */
+/**
+ * 輸出"bmw's destructor"
+ */ 
+~CBMW() 
+{ 
+cout << "bmw's destructor" << endl; 
+}
+/**
+ * 函式成員
+ */
+ /**
+ * 被呼叫時輸出"bmw's abs"
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * 函式成員
+ */
+ /**
+ * 被呼叫時輸出"bmw's start"
+ * 繼承CCAR的函式成員start
+ */
 void start()
 {
 cout << "bmw's start" << endl;
@@ -55,6 +144,9 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+ * 創建以bmw為名 CBMW類別
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
