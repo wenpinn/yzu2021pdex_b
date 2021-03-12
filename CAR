@@ -1,66 +1,163 @@
-
+/**
+ * @file class跟繼承用法的範例程式碼
+ *
+ * 這個檔案是介紹class的用法，還有一些基礎的class的指令
+ *
+ * 還有類別、建構子、繼承的示範
+ *
+ * @author 張蕙蘭 1092022
+ * @version 1.0
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+
+/**
+ * @brief CCAR的簡易說明
+ * 
+ * class CCAR
+ * private、public、protect
+ * 建構子、解構子
+ * light wheel 參數
+ */
 class CCAR {
 private:
-string nickname;
+string nickname; ///< 示範的字串
 protected:
-int light;
-int wheel;
+int light; ///< 示範的參數
+int wheel; ///< 示範的參數
 public:
+
+/**
+ * @brief CCAR簡易說明
+ *  
+ * light(2) 建構子給值
+ * wheel=5 等號給值
+ * 輸出文字及wheel的值
+ * 用來示範建構子何時執行(用類別名稱設定function會自動執行)
+ * 當宣告變數時，佔記憶體空間自動執行
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+
+
+/**
+ * @brief CCAR簡易說明
+ *  
+ * light(2) 建構子給值
+ * wheel=5 等號給值
+ * 輸出文字及nickname字串
+ * this 指標
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+
+
+/**
+ * @brief ~CCAR簡易說明
+ *  
+ * 輸出文字及string
+ * 用來示範解構子何時執行
+ * 在記憶體離開的前一刻自動執行
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+
+/**
+ * start的簡易說明
+ * 輸出文字
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+
+/**
+ * stop的簡易說明
+ * 輸出文字
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+
+/**
+ * turn的簡易說明
+ * 輸出文字
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+
+/**
+ * @brief CBMW class的簡易說明
+ *
+ * 繼承CCAR
+ * 新增function、增加功能、修改功能
+ */
 class CBMW : public CCAR {
 public:
+
+/**
+ * @brief CBMW的簡易說明
+ *
+ * 新增新的建構子
+ * 輸出文字及設定新的值
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+
+/** @brief ~CBMW的簡易說明
+ *
+ * 新增新的解構子
+ * 輸出文字
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+
+/**
+ * @brief Abs的簡易說明
+ *
+ * 新增新的function
+ * 輸出
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+
+/**
+ * @brief start的簡易說明
+ *
+ * 修改舊的function
+ * 輸出
+ */
 void start()
 {
 cout << "bmw's start" << endl;
-CCAR::start();//scope operator
+CCAR::start();//scope operator /// 範圍運算子(指的是CCAR的start)
 //CCAR c;
 //c.start();
 }
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
-CBMW bmw;
+CBMW bmw; /// 將CBMW class設定為bmw
 // bmw.light=3;
-bmw.start();
-bmw.Abs();
-bmw.stop();
+
+bmw.start(); ///執行CBMW class中的start function
+bmw.Abs(); ///執行CBMW class中的Abs function
+bmw.stop(); ///執行CBMW class中的stop function
 
 return 0;
 }
