@@ -1,47 +1,71 @@
-
+/**
+ *@Autor 1092030侯君翰
+ *@file iostream,string
+ *version 1.0
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *設一個叫CCAR的類別,可以組成車子的零件,讓車子動起來
+ */
 class CCAR {
 private:
+/**
+ *@brief車子物件的nikename
+ */
 string nickname;
 protected:
 int light;
 int wheel;
 public:
+/**
+ * 建構子 車子有兩個燈 五個輪子
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ *@brief 初始化燈和輪子
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ *@brief class的解構式
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ *@brief 控制車子動作的函式
+ */
 void start()
 {
 cout << "car's start" << endl;
-}
-void stop()
-{
-cout << "car's stop" << endl;
-}
-void turn()
-{
-cout << "car's turn" << endl;
+@@ -38,17 +60,29 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ *@brief 繼承CCAR
+ */
 class CBMW : public CCAR {
 public:
+/**
+ *@brief 初始化CBWM的燈與輪胎的值
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ *@brief abs的輸出函式
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -49,18 +73,20 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+ *@brief 開始的運算子
+ */
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
-}
-};
-//--------------------------
+@@ -58,6 +92,8 @@ CCAR::start();//scope operator
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
+/**
+ *@brief 函式運作
 bmw.start();
 bmw.Abs();
 bmw.stop();
-
 return 0;
 }
