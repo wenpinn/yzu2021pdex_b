@@ -1,29 +1,53 @@
-
+/**
+@file iostream string
+*@author 1092006張皓鈞
+  *version1.0
+  */
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
+/**
+  *A class for creating car and moving it.
+  */
+class CCAR
+{
 private:
-string nickname;
+string nickname; 
 protected:
-int light;
-int wheel;
+int light; 
+int wheel; 
 public:
+/**
+*@showing how many wheels. input light(2),wheel=5
+*/
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
-CCAR(string nickname) :light(2)
+/**
+*@display nickname
+*/
+CCAR(string nickname) :light(2) 
 {
 wheel = 5;
-this->nickname = nickname;
+/**
+*@indicate the specifically nickname.
+*/
+this->nickname = nickname; 
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+*@ ~ is when input delete will delete this function's parameter.
+*@delete this's function nickname.
+*/
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+*@brief for the function of car controlling.
+*/
 void start()
 {
 cout << "car's start" << endl;
@@ -38,10 +62,18 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
-class CBMW : public CCAR {
+/**
+*@inherited the parameter to CCAR.
+*@change the parrmeter in this function.
+*/
+class CBMW : public CCAR
+{
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+*@ is a cout function.
+*/
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -49,6 +81,9 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+*@ is a scope operator about start.
+*/
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
@@ -58,6 +93,9 @@ CCAR::start();//scope operator
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
+/**
+*@initiating this function.
+*/
 bmw.start();
 bmw.Abs();
 bmw.stop();
