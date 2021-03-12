@@ -1,7 +1,17 @@
-
+/**
+  * @author 1092020洪珮珊
+  * @version 1.0
+  * @since 2021.03.12
+  */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ * 先設置一個class 名稱為CCAR
+ * private不可被外部進行讀取、更改、繼承
+ * protected不可被外部進行讀取、更改，但可以被繼承
+ * public可以被外部進行讀取、更改、繼承。public還可以對private、protected進行修改、讀取
+ */
 class CCAR {
 private:
 string nickname;
@@ -38,6 +48,9 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * 這個架構的名稱為CBMW,然後繼承CCAR的public
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -55,6 +68,9 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+ * 以bmw為名建造CBMW架構的類別
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
