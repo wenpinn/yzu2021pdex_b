@@ -1,65 +1,159 @@
-
+/**
+ *＠brief 這是一個用來做出名為CCAR類別並使其被一個名為CBMW的類別繼承的程式
+ *@author 1092004鄭廷彥
+ *@version 1.0
+ */
+/**
+ *@brief 引入名為iostream以及string的標頭檔
+ *然後設定名稱空間為std
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *@brief 類別CCAR包含了private成員nickname以及受protected成員light,wheel還有public成員函式start,stop,turn,還有建構函式CCAR(),CCAR(string),以及解構函式~CCAR()
+ *@see private: nickname,protected:light,wheel;public:strart,stop,turn;constructor:CCAR(),CCAR(string);distructor:~CCAR()
+ */
 class CCAR {
+/**
+ *@brief 類別CCAR的private成員
+ */
 private:
+/**
+ *@brief 做一個string的成員參數叫做nickname
+ */
 string nickname;
+/**
+ *@brief 類別CCAR的protected成員
+ */
 protected:
+/**
+ * 做一個int的成員參數叫做light
+ */
 int light;
+/**
+ * 做一個int的成員參數叫做wheel
+ */
 int wheel;
+/**
+ *@brief 類別CCAR的public成員
+ */
 public:
-CCAR() :light(2)
+/**
+ *@brief 類別CCAR的建構函式，一個不用引入值的建構函式，一個需要引入string值的建構函式
+ */
+/**
+ *＠brief 將light設為２，wheel設為５，輸出"car's constructor(wheel="wheel
+ */
+CCAR():light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ *＠brief 將light設為２，wheel設為５，CCAR內的nickname改成引入值的nickname，輸出"car's constructor(nickname="nickname
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ *@brief 類別CCAR的解構函式，一個不用引入值的解構函式
+ */
+/**
+ *輸出"car's destructor（"nickname")"
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ *用來輸出 "car's start"的成員函式
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ *用來輸出 "car's stop"的成員函式
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ *用來輸出 "car's turn"的成員函式
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
+
 //--------------------------
+/**
+ *@brief 類別CBMW繼承了類別CCAR，其pulic成員函式有Abs,start，建構函式有CBMW()，解構函式有~CBMW()
+ *@see class:CCAR,public:Abs,strart;constructor:CBMW();distructor:~CBMW()
+ */
 class CBMW : public CCAR {
+
 public:
+/**
+ *@brief 類別CBMW的建構函式，一個不用引入值的建構函式
+ */
+/**
+ *將light設為4，wheel設為4，輸出"bmw's constructor"
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ *@brief 類別CBMW的解構函式，一個不用引入值的解構函式
+ */
+ /**
+ *輸出"bmw's destructor"
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ *用來輸出"bmw's abs" 的成員函式
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ *用來輸出"bmw's start" ，並使用Class CCAR的start函式的成員函式
+ */
 void start()
 {
 cout << "bmw's start" << endl;
+
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
 }
 };
 //--------------------------
+/**
+ *@brief 主程序
+ */
 int main(int argc, const char * argv[]) {
+/**
+ *創建名叫bmw的CBMW架構的class
+ */
 CBMW bmw;
 // bmw.light=3;
+/**
+ *使用bmw裡的start函式
+ */
 bmw.start();
+/**
+ *使用bmw裡的abs函式
+ */
 bmw.Abs();
+/**
+ *使用bmw裡的stop函式，這是繼承自CCAR架構
+ */
 bmw.stop();
 
 return 0;
