@@ -1,4 +1,3 @@
-
 /**
  * @author 1092038徐翊鈴
  * @version 1.0
@@ -23,20 +22,35 @@ protected:
 int light;
 int wheel;
 public:
+/**
+建構時會執行,給燈一個數值
+*/
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+
+/**
+建構時會執行
+*/
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+結束時執行
+*/
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
+}
+
+/**
+函式
+*/
 }
 void start()
 {
@@ -61,6 +75,8 @@ class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/** 
+*/
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -68,6 +84,9 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+使用CCAR的函式,指定function來源
+*/
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
