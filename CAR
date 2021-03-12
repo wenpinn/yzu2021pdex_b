@@ -144,7 +144,9 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
-
+/**
+ * 創建以bmw為名 CBMW類別
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
