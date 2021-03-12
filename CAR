@@ -103,30 +103,57 @@ public:
 /**
  *@brief 類別CBMW的建構函式，一個不用引入值的建構函式
  */
- 
+/**
+ *將light設為4，wheel設為4，輸出"bmw's constructor"
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 /**
  *@brief 類別CBMW的解構函式，一個不用引入值的解構函式
  */
+ /**
+ *輸出"bmw's destructor"
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ *用來輸出"bmw's abs" 的成員函式
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ *用來輸出"bmw's start" ，並使用Class CCAR的start函式的成員函式
+ */
 void start()
 {
 cout << "bmw's start" << endl;
+
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
 }
 };
 //--------------------------
+/**
+ *@brief 主程序
+ */
 int main(int argc, const char * argv[]) {
+/**
+ *創建名叫bmw的CBMW架構的class
+ */
 CBMW bmw;
 // bmw.light=3;
+/**
+ *使用bmw裡的start函式
+ */
 bmw.start();
+/**
+ *使用bmw裡的abs函式
+ */
 bmw.Abs();
+/**
+ *使用bmw裡的stop函式，這是繼承自CCAR架構
+ */
 bmw.stop();
 
 return 0;
