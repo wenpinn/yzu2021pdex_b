@@ -1,7 +1,14 @@
+/**
+ *@author1092026周庭豪
+ */
+
 
 #include <iostream>
 #include <string>
 using namespace std;
+
+/**
+ *
 class CCAR {
 private:
 string nickname;
@@ -38,6 +45,9 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ *CBMW繼承CCAR的所有功能
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
