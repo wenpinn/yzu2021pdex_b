@@ -1,7 +1,21 @@
 
+/**
+ * @author 1092038徐翊鈴
+ * @version 1.0
+ * @since20210312
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ * class:定義一個類別
+ * private:不可被繼承
+ * protected:可繼承
+ * public:可繼承可更改
+ * 建構子 給燈一個數值,在類別被創造出來時執行
+ * 解構子 給燈一個數值,當結束時執行
+ * void是函式,下面的在繼承後也可以使用
+ */
 class CCAR {
 private:
 string nickname;
@@ -38,6 +52,11 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * 繼承了上面的類別CCAR
+ * 使用前面已經寫好的函式start
+ * 指定function來源
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -55,12 +74,15 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+ * 以bmw為名建造CBMW架構的類別
+ * 使用函式
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
 bmw.start();
 bmw.Abs();
 bmw.stop();
-
 return 0;
 }
