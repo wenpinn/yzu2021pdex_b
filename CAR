@@ -1,66 +1,93 @@
-
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+  *@author Kevin 林俊廷
+  */
+/**
+  *
 class CCAR {
-private:
-string nickname;
-protected:
-int light;
-int wheel;
-public:
-CCAR() :light(2)
-{
-wheel = 5;
-cout << "car's constructor(wheel=" << wheel << ")" << endl;
-}
-CCAR(string nickname) :light(2)
-{
-wheel = 5;
-this->nickname = nickname;
-cout << "car's constructor(nickname=" << nickname << ")" << endl;
-}
-~CCAR()
-{
-cout << "car's destructor" << "(" << nickname << ")" << endl;
-}
-void start()
-{
-cout << "car's start" << endl;
-}
-void stop()
-{
-cout << "car's stop" << endl;
-}
-void turn()
-{
-cout << "car's turn" << endl;
-}
+  private:
+    string nickname;
+  protected:
+    int light;
+    int wheel;
+  public:
+    /**
+      * declare a constructor CCAR with no input number
+      * give light 2
+      * give wheel 5
+      * print wheel's number
+      */    
+    CCAR() :light(2){
+      wheel = 5;
+      cout << "car's constructor(wheel=" << wheel << ")" << endl;
+    }
+    /**
+      * declare a constructor CCAR with a input string nickname
+      * give light 2
+      * give wheel 5
+      * save input nikname to private nickname
+      */
+    CCAR(string nickname) :light(2){
+      wheel = 5;
+      this->nickname = nickname;
+      cout << "car's constructor(nickname=" << nickname << ")" << endl;
+    }
+    /**
+      * declare a destructor to free the memory of the constructor CCAR
+      * print nickname which is private member
+      */
+    ~CCAR(){
+      cout << "car's destructor" << "(" << nickname << ")" << endl;
+    }
+    /**
+      * declare a function to print "car's start"
+      */
+    void start(){
+      cout << "car's start" << endl;
+    }
+    /**
+      * declare a function to print "car's stop"
+      */
+    void stop(){
+      cout << "car's stop" << endl;
+    }
+    /**
+      * declare a function to print "car's turn"
+      */
+    void turn(){
+      cout << "car's turn" << endl;
+    }
 };
-//--------------------------
+/**
+  * declare a class CBMW to inherit the class CCAR
+  */
 class CBMW : public CCAR {
-public:
-CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-~CBMW() { cout << "bmw's destructor" << endl; }
-void Abs()
-{
-cout << "bmw's abs" << endl;
-}
-void start()
-{
-cout << "bmw's start" << endl;
-CCAR::start();//scope operator
-//CCAR c;
-//c.start();
-}
+  public:
+    CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+    ~CBMW() { cout << "bmw's destructor" << endl; }
+    void Abs(){
+      cout << "bmw's abs" << endl;
+    }
+    /**
+      * declare a function start to print "bmw's start"
+      * inherit function start from class CCAR
+      */
+    void start(){
+      cout << "bmw's start" << endl;
+      CCAR::start();//scope operator
+      //CCAR c;
+      //c.start();
+    }
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
-CBMW bmw;
+  CBMW bmw;
 // bmw.light=3;
-bmw.start();
-bmw.Abs();
-bmw.stop();
+  bmw.start();
+  bmw.Abs();
+  bmw.stop();
 
-return 0;
+  return 0;
 }
