@@ -1,7 +1,14 @@
-
+/**
+ *@author 1092044林悅福
+ *@version 1.0
+ *@since20210312
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *@ 1.設一個名為ccar的class 存放多個變數 2.private(不能存取class裡的變數)/protect(外面不能改，但繼承者可以使用)/public(可以存取) 
+ */
 class CCAR {
 private:
 string nickname;
@@ -9,6 +16,9 @@ protected:
 int light;
 int wheel;
 public:
+/**
+ * 此為建構值(一佔用記憶體就執行) 使用:light(2)可以修改變數的值 或是在函式裡面用 light=2
+ */
 CCAR() :light(2)
 {
 wheel = 5;
@@ -17,9 +27,15 @@ cout << "car's constructor(wheel=" << wheel << ")" << endl;
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
-this->nickname = nickname;
+/**
+ *  把痊癒變數複製給傳入的nickname
+ */
+this->nickname = nickname; 
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ *  此為解構值(清空記憶體時執行)
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
@@ -38,6 +54,9 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * 將class CCAR繼承給CBMW 包括解構值/建構值/public都可以使用
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -46,15 +65,24 @@ void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * 如果想修改舊功能就直接取一樣的名字 這裏是start()被修改
+ */
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+ * 如果還是想叫原本的start() 要用CCAR::
+ */
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
 }
 };
 //--------------------------
+/**
+ * 此為主程式執行 呼叫來自CBMW的start() Abs() stop() 解構值 建構值
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
