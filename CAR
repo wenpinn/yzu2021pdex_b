@@ -1,47 +1,61 @@
-
+/*
+ *@file class & CRC card
+ * 
+ *物件導向課程code註解
+ *
+ *@author 1092040陳宣予
+ */
+ 
 #include <iostream>
-#include <string>
+#include <string>        ///表現字串
 using namespace std;
+
+/**
+ * @Brief class CCAR的簡易說明
+ *
+ *An example for class
+ */
+ 
 class CCAR {
-private:
-string nickname;
-protected:
-int light;
-int wheel;
-public:
-CCAR() :light(2)
+private:            ///私用繼承，可不可以直接存取，同時是class的預設member權限
+string nickname;    ///string:內容為空字串
+protected:          ///保護繼承
+int light;          ///這是一個light的變數
+int wheel;          ///這是一個wheel的變數
+public:             ///Overloading
+CCAR() :light(2)    ///建構子給值
 {
-wheel = 5;
+wheel = 5；         ///等號給值
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
-CCAR(string nickname) :light(2)
+CCAR(string nickname) :light(2)   
 {
-wheel = 5;
-this->nickname = nickname;
+wheel = 5;                         ///輪子有五個
+this->nickname = nickname;         ///參數與成員變量名相同
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
-void start()
+void start()                  ///無形別
 {
 cout << "car's start" << endl;
 }
-void stop()
+void stop()                   ///無形別
 {
 cout << "car's stop" << endl;
 }
-void turn()
-{
+void turn()                   ///無形別
+{ 
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
 class CBMW : public CCAR {
-public:
-CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-~CBMW() { cout << "bmw's destructor" << endl; }
+public:                            ///沒有定義建構子，任何地方皆可使用
+CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; } ///建構子，不回傳值，不用呼叫
+~CBMW() { cout << "bmw's destructor" << endl; }                       ///解構子，離開的前一刻自動執行
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -49,18 +63,25 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
-CCAR::start();//scope operator
-//CCAR c;
-//c.start();
+CCAR::start();//scope operator             ///範圍運算子，宣告被定義的成員所屬的class名稱
+//CCAR c;            ///error 
+//c.start();         ///error
 }
 };
 //--------------------------
-int main(int argc, const char * argv[]) {
+/**
+ *funtion說明
+ *
+ *@param 參數的說明
+ *
+ *@return 傳回0
+ */
+int main(int argc, const char * argv[]) { ///參數argc的說明
 CBMW bmw;
 // bmw.light=3;
 bmw.start();
 bmw.Abs();
 bmw.stop();
 
-return 0;
+return 0;           ///回傳0
 }
