@@ -1,7 +1,18 @@
+/**
+ *@author1092026周庭豪
+ 
+ */
+
 
 #include <iostream>
 #include <string>
 using namespace std;
+
+/**
+ *增加一個類別 ccar
+ *有五個輪子／兩盞燈／會啟動／會轉彎／會停止 並可供存取
+ *新增一個字串叫nickname 供使用者自己存取使用
+ */
 class CCAR {
 private:
 string nickname;
@@ -20,6 +31,10 @@ wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+
+/**
+ *新增解構子CCAR 可以啟動／停止／轉彎
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
@@ -38,6 +53,9 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ *新增一個結構子CBMW繼承CCAR的所有功能
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
@@ -55,6 +73,9 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+ *主程式 並執行
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
