@@ -1,29 +1,58 @@
-
+/**
+  * @file iostream,string 
+  * @author 1092042 江秉成
+  * @version1.0
+  */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+  * @brief A class for how to create car and let it move.
+  */
 class CCAR {
 private:
+/**
+  * @brief the nickname of the car's object.
+  */
 string nickname;
 protected:
+/**
+  * @brief the number of light for car object.
+  */
 int light;
+/**
+  * @brief the number of wheel for car object.
+  */
 int wheel;
 public:
+/**
+  * @brief initialize light is 2 and wheel is 5.
+  */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+  * @brief  initialize the data member of light and wheel.
+  * @pram nickname of initializing the value.
+  */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+  * @brief destructor for the class.
+  */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+  * @brief the function of controlling the car's action.
+  */
 void start()
 {
 cout << "car's start" << endl;
@@ -38,10 +67,19 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+  * @brief A inherited from CCAR.
+  */
 class CBMW : public CCAR {
 public:
+/**
+  * @brief initialize CBMW's value about light and wheel.
+  */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+  * @brief it's a cout funtion about abs.
+  */
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -49,6 +87,9 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+/**
+  * @brief it's a scope operator about start.
+  */
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
@@ -58,6 +99,9 @@ CCAR::start();//scope operator
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
+/**
+  * @brief activated these function.
+  */
 bmw.start();
 bmw.Abs();
 bmw.stop();
