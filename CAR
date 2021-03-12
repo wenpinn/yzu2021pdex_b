@@ -1,29 +1,69 @@
+/**
+ * @file iostream, string
+ * @author 1092046 Tianmu Lin
+ * @version 1.10
+ */
 
 #include <iostream>
 #include <string>
 using namespace std;
+
+/**
+ * @brief A class for creating parent car object and outputing details.
+ */
 class CCAR {
 private:
+/**
+ * @brief The nickname of the car object.
+ * @see #getNickname()
+ */
 string nickname;
+
 protected:
+/**
+ * @brief Number of lights in the car object.
+ */
 int light;
+
+/**
+ * @brief Number of wheels in the car object.
+ */
 int wheel;
+
 public:
+/**
+ * @brief Initializes the car object's data members light and wheel.
+ * Nickname not given value.
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+
+/**
+ * @brief Initializes the car object's data members light and wheel.
+ * @param nickname for initializing value of this->nickname.
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+
+/**
+ * @brief Destructor for class object.
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+
+/**
+ * @brief start(), stop(), and turn() functions are for printing out.
+ * An outline for controling the car's actions.
+ */
 void start()
 {
 cout << "car's start" << endl;
@@ -36,12 +76,39 @@ void turn()
 {
 cout << "car's turn" << endl;
 }
+
+/*
+ * @brief Get function for string nickname.
+ * @return this->nickname
+ * @retval string type value
+ */
+string getNickname()
+{
+return nickname;
+}
 };
 //--------------------------
+
+/**
+ * @brief A class for inherited from CCAR class
+ * Has CCAR's data members and functions. 
+ */
 class CBMW : public CCAR {
 public:
+/**
+ * @brief Initializes the car object's data members light and wheel.
+ * Nickname not given value.
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+
+/**
+ * @brief Destructor for class object.
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+
+/*
+ * @brief Added custom functions.
+ *
 void Abs()
 {
 cout << "bmw's abs" << endl;
@@ -49,6 +116,10 @@ cout << "bmw's abs" << endl;
 void start()
 {
 cout << "bmw's start" << endl;
+
+/*
+ * @brief Scope operator. Prototype of polymorphism.
+ */
 CCAR::start();//scope operator
 //CCAR c;
 //c.start();
