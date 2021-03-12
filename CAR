@@ -1,10 +1,21 @@
-
+/**
+  *@author1092002郭品佑
+  *@version 1.0
+  */
 #include <iostream>
 #include <string>
-using namespace std;
+  using namespace std;
+/**
+  *物件導向之加入一個類別class name = ccar  
+  */
 class CCAR {
+
 private:
+/** 
+ *新增字串基本上就是給使用者自訂的一個暱稱
+ */
 string nickname;
+
 protected:
 int light;
 int wheel;
@@ -24,6 +35,7 @@ cout << "car's constructor(nickname=" << nickname << ")" << endl;
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+
 void start()
 {
 cout << "car's start" << endl;
@@ -38,6 +50,7 @@ cout << "car's turn" << endl;
 }
 };
 //--------------------------
+
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
