@@ -1,6 +1,6 @@
 /**
  * @file CAR.cpp
- * @author Tom Liu 1082054
+ * @author 劉文業 1082054
  * @version 1.1
  */
 
@@ -9,10 +9,15 @@
 using namespace std;
 
 /** 
-* class can distinguish each variable or string into private, protected and public
-* private means only the element in the bracket can access
-
-
+ * @brief This class is used for save some information of the car.
+ * @param nickname stored the nickname of the car.
+ * @param light stored the number of lights of the car.
+ * @param wheel stored the number of wheels of the car.
+ * CCAR() is a constructor and the following code ":light(2)" is meaning pass the number to the parameter called light.
+ * CCAR(string nickname) is received the value passing by the code in some line and passed that value to "string nickname" in line 24.
+ * ~CCAR is a destructor and executing at the end of this program.
+ */
+ 
 class CCAR 
 {
   private:
@@ -20,56 +25,63 @@ class CCAR
     
   protected:
     int light;
-    int wheel; 
+    int wheel;
     
   public:
-    CCAR() :light(2)
-    {
+    CCAR() :light(2) {
         wheel = 5;
         cout << "car's constructor(wheel=" << wheel << ")" << endl;
     }
     
-    CCAR(string nickname) :light(2)
-    {
+    CCAR(string nickname) :light(2) {
         wheel = 5;
         this->nickname = nickname;
         cout << "car's constructor(nickname=" << nickname << ")" << endl;
     }
 
-    ~CCAR() //波浪符等於不傳入參數
-    {
+    ~CCAR() //波浪符等於不傳入參數 {
         cout << "car's destructor" << "(" << nickname << ")" << endl;
     }
 
-    void start()
-    {
+    void start() {
         cout << "car's start" << endl;
     }
 
-    void stop()
-    {
+    void stop() {
         cout << "car's stop" << endl;
     }
 
-    void turn()
-    {
+    void turn() {
         cout << "car's turn" << endl;
     }
 };
 
 //--------------------------
 
+/**
+ * @brief Inheriting the class called CCAR and give the inherited class a name called CBMW.
+ * CBMW() is inheriting all function of CCAR and can use it.
+ * start() is modified from the original function and become a new function.
+ */
+
 class CBMW : public CCAR
 {
   public:
-    CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
-    ~CBMW() { cout << "bmw's destructor" << endl; }
-    void Abs()
-    {
+    CBMW() {
+    light = 4;
+    wheel = 4;
+    cout << "bmw's constructor" << endl; ///< modified code and different from the original one in line 33.
+    }
+    
+    ~CBMW() {
+    cout << "bmw's destructor" << endl;
+    }
+    
+    void Abs() {
         cout << "bmw's abs" << endl;
     }
-    void start()
-    {
+    
+    void start() {
         cout << "bmw's start" << endl;
         CCAR::start();//scope operator
         //CCAR c;
