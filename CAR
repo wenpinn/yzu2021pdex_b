@@ -1,4 +1,10 @@
-
+/**
+ *＠brief 這是一個用來做出名為CCAR類別並使其被一個名為CBMW的類別繼承的程式
+ *@author 1092048陳聖勳
+ *@time 110/3/13
+ *@version 1.0
+ */
+/**
 #include <iostream>
 #include <string>
 using namespace std;
