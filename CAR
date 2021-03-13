@@ -2,7 +2,13 @@
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *創建一個叫CCAR的類別
+ */
 class CCAR {
+/**
+ *不受此類別外的物件影響，也部會被繼承
+ */
 private:
 string nickname;
 protected:
@@ -17,35 +23,65 @@ cout << "car's constructor(wheel=" << wheel << ")" << endl;
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
+/**
+ *將指定的值丟到private的nickname裡面
+ */
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ *當一個類別結束所做的動作
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ *成員函式
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ *成員函式
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ *成員函式
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ *繼承了CCAR的類CBMW，除了private都會繼承
+ */
 class CBMW : public CCAR {
 public:
+/**
+ *當一個類別被創造出來且沒被指定做為任何變數時所做的事
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ *當一個類別結束時所做的動作
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ *成員函式
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ *成員函式，輸出文字時繼承CCAR的star
+ */
 void start()
 {
 cout << "bmw's start" << endl;
@@ -56,10 +92,22 @@ CCAR::start();//scope operator
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
+/**
+ *創bmw為名的CBMW類別
+ */
 CBMW bmw;
 // bmw.light=3;
+/**
+ *CBMW裡面的void star
+ */
 bmw.start();
+/**
+ *CBMW裡面的void abs
+ */
 bmw.Abs();
+/**
+ *CBMW裡面的void stop
+ */
 bmw.stop();
 
 return 0;
