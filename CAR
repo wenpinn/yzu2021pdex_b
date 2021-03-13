@@ -1,51 +1,106 @@
-
+/**
+ *@author 1092013王炳翔
+ *@version 1.0
+ */
+ /**
+  *引入iostream以及string的標頭檔
+  *然後使用命名空間std
+  */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ * @brief 定義一類別CCAR 
+ */
 class CCAR {
+/**
+ * @brief 使成員string nickname只能夠在CCAR修改
+ */
 private:
 string nickname;
+/**
+ * @brief 使成員light,wheel能夠在允許的區位做出存取並修改
+ */
 protected:
 int light;
 int wheel;
+/**
+ * @brief 能夠讓其他區域直接使用
+ */
 public:
+/**
+ * @brief 優先執行。將light設為２，wheel設為５，並輸出car's constructor(wheel=" << wheel << ")
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * @brief 優先執行。將light設為２，wheel設為５，並輸出"car's constructor(nickname=" << nickname << ")
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ * @brief 使最後一刻執行。輸出car's destructor" << "(" << nickname << ")
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * @brief 用來輸出 "car's start"的function
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * @brief 用來輸出 "car's stop"的function
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ * @brief 用來輸出 "car's turn"的function
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * @brief class CBMW 繼承 public CCAR的功能
+ */
 class CBMW : public CCAR {
 public:
+/**
+ * @brief 優先執行。將light設為4，wheel設為4，並輸出bmw's constructor
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ * @brief 最後執行。輸出bmw's destructor
+ */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * @brief 用來輸出 "Abs"的function
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * @brief 覆蓋class CCAR 的"start"的function
+ */
+/**
+ * @brief 用來輸出 "start"的function
+ */
 void start()
 {
 cout << "bmw's start" << endl;
