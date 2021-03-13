@@ -5,7 +5,7 @@ using namespace std;
   *@author Kevin 林俊廷
   */
 /**
-  *
+  * declare  
 class CCAR {
   private:
     string nickname;
@@ -76,15 +76,17 @@ class CBMW : public CCAR {
       */
     void start(){
       cout << "bmw's start" << endl;
-      CCAR::start();//scope operator
-      //CCAR c;
-      //c.start();
+      CCAR::start(); 
     }
 };
-//--------------------------
+/**
+  * declare a type CBMW object bmw
+  * execute object's inherit function start to indicate bmw's start and the start of the program
+  * execute object's function abs to print bmw's abs
+  * execute object's inherit function stop to indicate car's stop
+  */
 int main(int argc, const char * argv[]) {
   CBMW bmw;
-// bmw.light=3;
   bmw.start();
   bmw.Abs();
   bmw.stop();
