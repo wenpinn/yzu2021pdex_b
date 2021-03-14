@@ -6,59 +6,97 @@
 #include <string>
   using namespace std;
 /**
-  *物件導向之加入一個類別class name = ccar  
+  *新增類別CCAR。
   */
 class CCAR {
-
+/**
+  *不被其他物件影響，不被繼承。
+  */
 private:
 /** 
- *新增字串基本上就是給使用者自訂的一個暱稱
- */
+  *新增字串給使用者自訂名稱。
+  */
 string nickname;
-
+/**
+  *不被其他物件影響，但是可被繼承。
+  */
 protected:
 int light;
 int wheel;
+/**
+  *會被其他物件影響，會被繼承。
+  */
 public:
+/**
+  *建構子，新增類別但沒有被指定變數時執行。
+  */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+  *新增類別而且被指定變數時執行。
+  */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+  *解構子，類別退出記憶體時執行。
+  */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
-
+/**
+  *Member function1
+  */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+  *Member function2
+  */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+  *Member function3
+  */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
-
+/**
+  *新增類別CBMW，繼承CCAR，除了Privates內的。
+  */
 class CBMW : public CCAR {
 public:
+/**
+  *建構子，新增類別但沒有被指定變數時執行。
+  */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+  *解構子，類別退出記憶體時執行。
+  */
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+  *Member function1
+  */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+  *Member function1
+  */
 void start()
 {
 cout << "bmw's start" << endl;
@@ -68,6 +106,9 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+  *新增名為bmw的CBMW類別。
+  */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
