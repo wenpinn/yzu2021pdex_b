@@ -1,8 +1,17 @@
-
+/**
+ * @作者 1092052 張翔喻
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *宣告一個類別class為CCAR
+class (類別)是將資料以及函數組織在同一個結構的方法
+ */
 class CCAR {
+/**
+ * 不受此類別外的物件影響，不會被繼承
+ */
 private:
 string nickname;
 protected:
@@ -12,11 +21,17 @@ public:
 CCAR() :light(2)
 {
 wheel = 5;
+/**
+ * 建構函式(constructor)的名稱與類別的名稱相同，但沒有傳回值
+ */
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
+/**
+ * 將指定的值丟到private的nickname裡面
+ */
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
@@ -24,28 +39,46 @@ cout << "car's constructor(nickname=" << nickname << ")" << endl;
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * 成員函式
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * 成員函式
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ * 成員函式
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * 繼承了CCAR的類CBMW，除了private都會繼承
+ */
 class CBMW : public CCAR {
 public:
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ *成員函式
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * 成員函式，輸出文字時繼承CCAR的star
+ */
 void start()
 {
 cout << "bmw's start" << endl;
@@ -56,11 +89,22 @@ CCAR::start();//scope operator
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
+/**
+ * 宣告bmw為名的CBMW類別
+ */
 CBMW bmw;
 // bmw.light=3;
+/**
+ * CBMW裡面的void star
+ */
 bmw.start();
+/**
+ * CBMW裡面的void abs
+ */
 bmw.Abs();
+/**
+ *CBMW裡面的void stop
+ */
 bmw.stop();
-
 return 0;
 }
