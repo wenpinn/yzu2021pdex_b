@@ -2,14 +2,14 @@
 #include <string>
 using namespace std;
 /**
-  *@file Car.cpp
-  *@author Kevin 林俊廷
-  *@date 15 March 2021
-  *@brief demo
-  *@version 1.0
+  * @file Car.cpp
+  * @author Kevin
+  * @date 15 March 2021
+  * @version 1.0
   */
 /**
-  * declare  
+  * declare  a class to set value and print
+  */
 class CCAR {
   private:
     string nickname;
@@ -69,8 +69,14 @@ class CCAR {
   */
 class CBMW : public CCAR {
   public:
+  /**
+    * declare bMW's constrctor and destrcuctor
+    */
     CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
     ~CBMW() { cout << "bmw's destructor" << endl; }
+  /**
+    * declare a function start to print "bmw's abs"
+    */
     void Abs(){
       cout << "bmw's abs" << endl;
     }
