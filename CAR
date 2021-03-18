@@ -1,46 +1,87 @@
-
+/**
+ *@author1092012林俊佑
+ *@since 20210318
+ */
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+ *加入一個類別命名為 ccar  
+ */
 class CCAR {
 private:
+/** 
+ *新增自訂一個暱稱
+ */
 string nickname;
+/**
+ *可被繼承 不會被其他物件影響
+ */
 protected:
 int light;
 int wheel;
+/**
+ *會被繼承也會被其他物件影響
+ */
 public:
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ *當新增類別且被指定變數時執行
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ *為解構子 當類別退出記憶體時執行
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ * 為function1
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+/**
+ * 為function2
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/**
+ *為function3
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ *新增類別CBMW可繼承CCAＲ
+ */
 class CBMW : public CCAR {
 public:
+/**
+ *建構子當新增類別但沒有被指定變數時執行
+ */
+
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/**
+ *解構子當類別退出記憶體時執行
+ */
+
 ~CBMW() { cout << "bmw's destructor" << endl; }
 void Abs()
 {
@@ -55,6 +96,9 @@ CCAR::start();//scope operator
 }
 };
 //--------------------------
+/**
+ *新增CBMW類別命名為bmw
+ */
 int main(int argc, const char * argv[]) {
 CBMW bmw;
 // bmw.light=3;
