@@ -1,51 +1,103 @@
-
+/**
+ *@author 1092011郭久慶
+ *@version 1.0
+ *載入iostream以及string的標頭檔
+ *使用命名空間
+ */
 #include <iostream>
 #include <string>
-using namespace std;
+using namespace std;  
+/**
+@brief定義CCAR類別
+@brief定義private成員 nickname
+*/
 class CCAR {
 private:
 string nickname;
+/**
+@brief定義protected成員light wheel
+*/
 protected:
 int light;
 int wheel;
+
 public:
+/**
+ * CCAR的建構子
+ * 設定light=2,wheel=5
+ * 輸出"car's constructor(wheel=" << wheel << ")"
+ */
 CCAR() :light(2)
 {
 wheel = 5;
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/**
+ * 類別被創造出來且被指定string時做的事，light=2
+ * 設定wheel=5
+ * 將指定的值丟到nickname裡面
+ * 輸出"car's constructor(nickname=" << nickname << ")"
+ */
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/**
+ * CCAR的解構子
+ * 輸出"car's destructor" << "(" << nickname << ")"
+ */
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/**
+ *start函式
+ *輸出 "car's start"
+ */
 void start()
 {
 cout << "car's start" << endl;
 }
+*stop函式
+ *輸出 "car's stop"
+ */
 void stop()
 {
 cout << "car's stop" << endl;
 }
+*turn函式
+ *輸出 "car's turn"
+ */
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/**
+ * @brief 創建CBMW class類別，繼承CCAR
+ * 公開繼承
+ */
 class CBMW : public CCAR {
 public:
+/**
+ * CBMW的建構子 light = 4; wheel = 4;  輸出 "bmw's constructor" 
+ * CBMW的解構子 輸出 "bmw's destructor" 
+ */
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/**
+ * ABS函式 輸出bmw's abs
+ */
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/**
+ * start函式 輸出bmw's start
+ */
 void start()
 {
 cout << "bmw's start" << endl;
